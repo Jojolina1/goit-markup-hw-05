@@ -186,6 +186,7 @@ body {
   letter-spacing: 0.02em;
   color: var(--secondary-text-color);
   transition: color var(--transition);
+  text-decoration: none;
 }
 .contact:hover,
 .contact:focus {
