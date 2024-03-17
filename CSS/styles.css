@@ -4,6 +4,7 @@
   --link-color-hover: rgb(60, 7, 235);
   --link-color-visited: rgb(128, 0, 128);
   --main-background-color: rgb(255, 255, 255);
+  --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 *,
@@ -137,9 +138,7 @@ body {
   height: 420px;
   background: #fff;
   cursor: pointer;
-  transition-property: box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: box-shadow var(--transition);
 }
 .project-card:hover {
   box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.48);
@@ -173,26 +172,20 @@ body {
   letter-spacing: 0.02em;
   color: var(--primary-text-color);
   text-decoration: none;
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition);
 }
 .link:hover,
 .link:focus {
   color: var(--link-color-hover);
 }
-.link:focus {
-  text-decoration: underline;
-}
+
 .contact {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--secondary-text-color);
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition);
 }
 .contact:hover,
 .contact:focus {
@@ -267,9 +260,7 @@ body {
   margin-left: 636px;
   cursor: pointer;
   position: relative;
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition);
 }
 .mainpage-button:hover,
 .mainpage-button:focus {
@@ -305,9 +296,11 @@ body {
   height: 48px;
   margin-left: 24px;
   cursor: pointer;
-  transition-property: color, box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition);
+}
+
+.portofolio-button {
+  transition: box-shadow var(--transition);
 }
 .portofolio-button:hover,
 .portofolio-button:focus {
@@ -352,9 +345,12 @@ body {
 .trailing-icon {
   padding: 8px 8px 5px 8px;
   border-radius: 50%;
-  transition-property: background-color, fill, color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: rgb(255, 255, 255);
+  transition: fill var(--transition);
+  transition: color var(--transition);
+}
+.trailing-icon {
+  transition: background-color var(--transition);
 }
 .trailing-icon:hover {
   background-color: rgb(77, 90, 229);
@@ -383,9 +379,9 @@ body {
   border-color: rgb(142, 143, 153);
   color: rgb(142, 143, 153);
   fill-opacity: 1;
-  transition-property: color, border-color, fill;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill var(--transition);
+  transition: color var(--transition);
+  transition: border-color var(--transition);
 }
 .svg:hover {
   color: inherit;
@@ -438,8 +434,7 @@ body {
 .bg-icon {
   padding: 8px 8px 5px 8px;
   border-radius: 50%;
-  transition-property: background-color;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color var(--transition);
 }
 .bg-icon:hover {
   background-color: rgb(77, 90, 229);
@@ -470,7 +465,7 @@ body {
   background-color: rgb(77, 90, 229);
   opacity: 1;
   transform: translateY(101%);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform var(--transition);
 }
 .overlay-img {
   position: relative;
@@ -479,16 +474,9 @@ body {
 .overlay-img:hover .overlay {
   transform: translateY(0px);
 }
-.window {
-  box-sizing: border-box;
-  border-radius: 4px;
-  width: 408px;
-  height: 584px;
-  background-color: rgb(252, 252, 252);
-  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.12),
-    0 1px 1px 0 rgba(0, 0, 0, 0.14);
-  cursor: pointer;
-  margin: auto;
+.is-hidden {
+  visibility: hidden;
+  transform: scale(1.1);
 }
 .backdrop {
   width: 1440px;
@@ -500,7 +488,22 @@ body {
   top: 0;
   right: 0;
   bottom: 0;
+  transition: transform var(--transition);
+  opacity: 100%;
 }
+.window {
+  box-sizing: border-box;
+  border-radius: 4px;
+  width: 408px;
+  height: 584px;
+  background-color: rgb(252, 252, 252);
+  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.12),
+    0 1px 1px 0 rgba(0, 0, 0, 0.14);
+  cursor: pointer;
+  margin: auto;
+  position: relative;
+}
+
 .close {
   width: 24px;
   height: 24px;
@@ -511,9 +514,5 @@ body {
   border-color: rgba(0, 0, 0, 0.102);
   background-color: rgb(231, 233, 252);
   color: rgb(46, 47, 66);
-}
-.is-hidden {
-  visibility: hidden;
-  pointer-events: all;
-  opacity: 100%;
+  cursor: pointer;
 }
